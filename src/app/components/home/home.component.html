@@ -1,0 +1,17 @@
+<div class="row row-cols-1">
+  <div class="col-md-3" *ngFor="let item of nuevasCanciones">
+
+    <div class="card my-1">
+      <img [src]="item.images[0].url" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{item.name}}</h5>
+        <p class="card-text">
+          <span class="badge rounded-pill text-bg-primary" *ngFor="let artista of item.artists">
+            {{artista.name}}
+          </span>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
