@@ -2,15 +2,53 @@
 
 <div class="row animated fadeIn" *ngIf="!loading">
   <div class="col-2">
-    <img [src]="artista.images | noimage" alt="" class="img-thumbnail img-circle">
+    <img
+      [src]="artista.images | noimage"
+      alt=""
+      class="img-thumbnail img-circle"
+    />
   </div>
   <div class="col">
-    <h3>{{artista.name}}</h3>
+    <h3>{{ artista.name }}</h3>
     <p>
       <a [href]="artista.external_urls.spotify" target="_blank">Page</a>
     </p>
   </div>
   <div class="col-4 text-right">
     <a routerLink="/search" class="btn btn-primary" role="button">Regresar</a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="table table-light">
+      <thead>
+        <tr>
+          <th>Foto</th>
+          <th>Album</th>
+          <th>Cancion</th>
+          <th>Vista Previa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of topTracks">
+          <td>
+            <img [src]="item.album.images | noimage" class="img-thumb" />
+          </td>
+          <td>{{ item.album.name }}</td>
+          <td>{{ item.name }}</td>
+          <td>
+            <iframe
+              [src]="item.uri | domseguro"
+              width="300"
+              height="380"
+              frameborder="0"
+              allowtransparency="true"
+              allow="encrypted-media"
+            ></iframe>
+          </td>
+        </tr>
+      </tbody>
+    </div>
   </div>
 </div>
